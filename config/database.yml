@@ -1,0 +1,23 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  
+  pool: 5
+  template: template0
+
+development:
+  <<: *default
+  database: try_development
+
+ 
+test:
+  <<: *default
+  database: try_test
+
+
+production:
+  <<: *default
+  database: try_production
+  username: try
+  password: <%= ENV['TRY_DATABASE_PASSWORD'] %>
