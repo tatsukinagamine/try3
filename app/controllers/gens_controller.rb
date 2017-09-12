@@ -28,8 +28,16 @@ class GensController < ApplicationController
   end
   
   def edit
+    @gen = Gen.find(params[:id])
   end
   
+  def update
+    @gen = Gen.find(params[:id]) 
+    @gen.update(gens_params)
+     redirect_to gens_path, notice:"ツイッターを更新しました！"
+  end
+  
+   
   def destroy
     @gen.destroy
     redirect_to gens_path, notice:"ツイッターを削除しました！"
